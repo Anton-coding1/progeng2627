@@ -1,0 +1,22 @@
+#include <iostream>
+using namespace std;
+
+
+int main(){
+    cout << "enter n: ";
+    int n;
+    std::cin >> n;
+    int z {};
+    int i {};
+
+ while(i < n)
+ {
+    while(z<n){
+        cout << '*';
+        ++z;
+    }
+    z=0;
+    ++i;
+    cout << '\n';
+ }
+}
