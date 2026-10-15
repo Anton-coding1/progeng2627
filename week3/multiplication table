@@ -1,0 +1,24 @@
+#include <iostream>
+using namespace std;
+
+
+int main(){
+    cout << "enter n: ";
+    int n;
+    std::cin >> n;
+    int z {};
+    int i {};
+    int y {};
+
+ while(i < n)
+ {
+    while(z<n){
+        y=y+1;
+        cout << y << '\t';
+        ++z;
+    }
+    z=0;
+    ++i;
+    cout << '\n';
+ }
+}
