@@ -1,0 +1,33 @@
+#include <iostream>
+using namespace std;
+
+bool perimter_area(double a, double b, double& area, double& perimter)
+{
+    bool is_valid;
+    if((a <=0) || (b<=0))
+        is_valid = false;
+    else{
+        is_valid = true;
+        area = a * b;
+        perimter = (2*a) + (2 * b);
+
+    }
+    return is_valid;
+}
+
+int main(){
+    double a,b;
+    cout << "This function will rrturn the area and perimter of a oblong - sides connected by right angle cannot be equal\n ";
+    cout << "please enter 2 values: ";
+    cin >> a >> b;
+    double a1 , p1;
+
+    if( perimter_area(a,b,a1,p1))
+    {
+        cout << "area is: " << a1 << " perimter is: " << p1;
+    }
+    else
+        cout << "no solutions as impossible lengths";
+
+
+}
