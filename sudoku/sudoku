@@ -47,7 +47,6 @@ void get_col(int c, const std::vector<int>& in, std::vector<int>& out){
     }
 }
 
-// note that this function must (meaningfully) use function twod_to_oned
 void get_subsq(int subs, const std::vector<int>& in, std::vector<int>& out){
     int square_of_square = sqrt(sqrt(in.size()));
     int row_start = (subs / square_of_square) * square_of_square;
@@ -65,7 +64,6 @@ bool valid_sudoku(const std::vector<int>& g){
     int side = std::sqrt(g.size()); 
     std::vector<int> seq;
 
-    // for each row...
     for(int i = 0; i < side; i++){
         seq.clear();
         get_row(i, g, seq);
@@ -75,7 +73,6 @@ bool valid_sudoku(const std::vector<int>& g){
         }
     }
 
-    // for each column...
     for(int i = 0; i < side; i++){
         seq.clear();
         get_col(i, g, seq);
@@ -85,7 +82,6 @@ bool valid_sudoku(const std::vector<int>& g){
         }
     }
 
-    // for each subsquare...
    for(int i = 0; i < side; i++){
          seq.clear();
         get_subsq(i, g, seq);
