@@ -1,8 +1,6 @@
 #include <iostream>
 #include <vector>
 
-// given input of grid - has to find the words going up or down - print final grid using #
-
 std::vector<std::string> row_check(const std::vector<std::string>& grid,
     const std::vector<std::string>& words,
     std::vector<std::string>& not_found);
@@ -13,19 +11,28 @@ std::vector<std::string> column_check(const std::vector<std::string>& grid,
 
 std::vector<std::string> transposition(const std::vector<std::string>& grid);
 
-
+std::vector<std::string> solution1 (std::vector<std::string>& rows,
+    std::vector<std::string>& columns);
 
 void find_words(
     const std::vector<std::string>& grid, 
     const std::vector<std::string>& words,
     std::vector<std::string>& solution,
-    std::vector<std::string>& not_found
-)
+    std::vector<std::string>& not_found)
 {
 not_found = words;
-
-
+std::vector<std::string> row_checked = row_check(grid,words,not_found);
+std::vector<std::string> column_checked = column_check(grid,words,not_found);
+std::vector<std::string> not_found_solution = {};
+for(std::string word : not_found)
+{
+    if(word != "removed")
+        not_found_solution.push_back(word);
 }
+not_found = not_found_solution;
+solution = solution1(row_checked,column_checked);
+}
+
 std::vector<std::string> row_check(const std::vector<std::string>& grid, const std::vector<std::string>& words,std::vector<std::string>& not_found)
 {
     std::string current_row;
@@ -88,6 +95,25 @@ std::vector<std::string> transposition(const std::vector<std::string>& grid)
     return transposed_vector;
 
 
+}
+std::vector<std::string> solution1(std::vector<std::string>& rows, std::vector<std::string>& columns)
+{
+    std::vector<std::string> solution = rows;
+    for(int row = 0; row < rows.size() ; ++row)
+    {
+        for(int column = 0; column < rows[0].size(); ++column)
+        {
+            if((((rows[row])[column]) == '#') && (((columns[row])[column]) == '#'))
+                (solution[row])[column] = '#';
+            if((((rows[row])[column]) == '#') && (((columns[row])[column]) != '#'))
+                (solution[row])[column] = ((columns[row])[column]);
+            if((((rows[row])[column]) != '#') && (((columns[row])[column]) == '#'))
+                (solution[row])[column] = ((rows[row])[column]);
+            
+            
+        }
+    }
+return solution;
 }
 int main(){
 
